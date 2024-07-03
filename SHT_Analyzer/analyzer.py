@@ -11,7 +11,7 @@ class SHT_Analyzer:
 
     def __init__(self, filepath):
         self.raw_data = pd.read_csv(filepath)
-        self.all_data = bin_by_minute(standardize_datetime(filepath))
+        self.all_data = bin_by_minute(standardize_datetime(filepath), n_minutes = 10)
         # Bins data into 1min intervals
         self.dt_data = self.all_data["date-time"]
         

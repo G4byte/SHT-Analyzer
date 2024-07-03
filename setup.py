@@ -4,14 +4,14 @@ setup(
     name='SHT_Analyzer',
     version='0.1.0',    
     description="Data visualization for IRIS' Solid Hydrogen Target",
-    # url='https://github.com/shuds13/pyexample',
+    url='https://github.com/G4byte/SHT-Analyzer',
     author='Gabe Gorbet',
     author_email='ggorbet@triumf.ca',
     license='BSD 2-clause',
     packages=['SHT_Analyzer'],
-    # install_requires=['mpi4py>=2.0',
-    #                   'numpy',                     
-                      # ],
+    install_requires=[
+                      'numpy',                     
+                      ],
 
     classifiers=[
         'Development Status :: 1 - Planning',

@@ -5,8 +5,31 @@ from datetime import timedelta
 
 def show_fits(dt_data, mask, data, col, with_fit, t_data, slope,\
               intercept, chi_sq, DOF, start_time, end_time, data_label):
-# Displays data from cold period with fit line to show 
-# warming trend
+"""
+    Displays data from a cold period with fit line to quantify warming trend. 
+    
+    This function is passed a mask for cold period data and fit information to plot the warming trend.
+    The option to plot the data without the fit is also available.
+
+    Args:
+        dt_data: A 1-D datetime array
+        mask: Boolean array indicating where we were cold
+        data: 1-D array of the quantity we are tracking (temperature, pressure)
+        col: String, column label in the output of the SHT logger
+        with_fit: bool, True indicating to plot the fit line, False, otherwise
+        t_data: A 1-D float array indicating number of seconds since the start time. 
+                Defined within t_data is our time 'zero' for finding the warming rate.
+        slope: The warming rate in K/day. The 'a' in f(x) = ax + b 
+        intercept: The temperature at time zero in K. The 'b' in f(x) = ax + b 
+        chi_sq: The chi squared value of the fit, not yet divided by the degrees of freedom. See get_chi_sq in fit_tools.py
+        DOF: The number of degrees of freedom in the fit
+        start_time: Datetime corresponding to the start of the cold period 
+        end_time: Datetime corresponding to the end of the cold period 
+        data_label: String, whatever we want to label the data as in the plot. Unlike col, it has no indexing use.
+    Returns:
+        None
+    
+"""
     s_per_day = 86400
     
     plt.style.use("dark_background")
@@ -32,8 +55,25 @@ def show_fits(dt_data, mask, data, col, with_fit, t_data, slope,\
     ax.legend(fontsize = 15)
 
 def show_warming_trends(datetimes, slopes, errs, dates, col):
-# Displays warming rates from many cold periods over 
-# months/years of operation
+"""
+    Displays warming rates from many cold periods over months/years of operation.
+    
+    This function is passed a number of different warming rates, generated elsewhere, to 
+    illustrate the warming effect over time. Hardcoded in are the periods during which 
+    the mask was on the target for reference. 
+
+    Args:
+        datetimes: A 1-D datetime array
+        slopes: The warming rates in K/day
+        errs: The errors on those warming rates
+        dates: Dates for the cold periods, in colloquial format
+        col: String, column label in the output of the SHT logger
+        
+    Returns:
+        None
+    
+"""
+    
     plt.style.use("dark_background")
     s_per_day = 86400
 
